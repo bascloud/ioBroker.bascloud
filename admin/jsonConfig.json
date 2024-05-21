@@ -1,0 +1,122 @@
+{
+  "i18n": true,
+  "type": "panel",
+  "items": {
+    "tenantId": {
+      "type": "text",
+      "label": "Tenant ID",
+      "newLine": false
+    },
+    "apiKey": {
+      "type": "password",
+      "label": "API Key",
+      "newLine": false
+    },
+    "divider": {
+      "type": "divider",
+      "label": "Divider",
+      "newLine": true
+    },
+    "readingsWrite": {
+      "type": "accordion",
+      "label": "Readings (Write to BAScloud)",
+      "newLine": true,
+      "items": [
+        {
+          "type": "objectId",
+          "attr": "localId",
+          "label": "(local) ioBroker Object ID",
+          "customFilter": { "type": ["state"], "common": { "type": "number" } }
+        },
+        {
+          "type": "text",
+          "attr": "remoteId",
+          "label": "(remote) Device ID"
+        },
+        {
+          "type": "checkbox",
+          "attr": "intervalEnabled",
+          "label": "Transmit Interval",
+          "newLine": true
+        },
+        {
+          "type": "number",
+          "attr": "interval",
+          "label": "Interval",
+          "step": 1,
+          "default": 15,
+          "disabled": "return !data.intervalEnabled;",
+          "sm": 3,
+          "newLine": true
+        },
+        {
+          "type": "select",
+          "attr": "intervalUnit",
+          "label": "Interval Unit",
+          "options": [
+            { "value": "m", "label": "Minutes" },
+            { "value": "h", "label": "Hours" },
+            { "value": "d", "label": "Days" }
+          ],
+          "default": "m",
+          "sm": 3,
+          "disabled": "return !data.intervalEnabled;"
+        },
+        {
+          "type": "select",
+          "attr": "intervalFunction",
+          "label": "Interval Function",
+          "options": [
+            { "value": "last", "label": "Last" },
+            { "value": "min", "label": "Minimum" },
+            { "value": "max", "label": "Maximum" }
+          ],
+          "default": "last",
+          "sm": 3,
+          "disabled": "return !data.intervalEnabled;"
+        }
+      ],
+      "titleAttr": "localId"
+    },
+    "readingsRead": {
+      "type": "accordion",
+      "label": "Readings (Read from BAScloud)",
+      "newLine": true,
+      "items": [
+        {
+          "type": "text",
+          "attr": "localId",
+          "label": "(local) Variable Name"
+        },
+        {
+          "type": "text",
+          "attr": "remoteId",
+          "label": "(remote) Device ID"
+        },
+        {
+          "type": "text",
+          "attr": "unit",
+          "label": "Unit"
+        },
+        {
+          "type": "number",
+          "attr": "interval",
+          "label": "Read Interval",
+          "newLine": true
+        },
+        {
+          "type": "select",
+          "attr": "intervalUnit",
+          "label": "Read Interval Unit",
+          "options": [
+            { "value": "m", "label": "Minutes" },
+            { "value": "h", "label": "Hours" },
+            { "value": "d", "label": "Days" }
+          ],
+          "default": "m"
+        }
+      ],
+      "titleAttr": "localId"
+    }
+  }
+}
