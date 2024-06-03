@@ -59,6 +59,7 @@
     },
     "platform": "Javascript/Node.js",
     "main": "build/main.js",
+    "nogit": true,
     "icon": "bascloud.png",
     "enabled": true,
     "extIcon": "https://raw.githubusercontent.com/BAScloud/ioBroker.bascloud/main/admin/bascloud.png",
@@ -85,8 +86,10 @@
     ]
   },
   "native": {
-    "option1": true,
-    "option2": "42"
+    "tenantId": "",
+    "apiKey": "42",
+    "readingsWrite": [],
+    "readingsRead": []
   },
   "objects": [],
   "instanceObjects": []
