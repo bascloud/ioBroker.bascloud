@@ -3,6 +3,19 @@
     "name": "bascloud",
     "version": "0.1.1",
     "news": {
+      "0.1.1": {
+        "en": "small fixes, add build folder",
+        "de": "Kleine Korrekturen, Build-Ordner hinzufügen",
+        "ru": "небольшие исправления, добавлена ​​папка сборки",
+        "pt": "pequenas correções, adicione pasta de compilação",
+        "nl": "kleine oplossingen, voeg een build-map toe",
+        "fr": "petites corrections, ajouter un dossier de construction",
+        "it": "piccole correzioni, aggiunta della cartella di build",
+        "es": "pequeñas correcciones, agregar carpeta de compilación",
+        "pl": "małe poprawki, dodaj folder kompilacji",
+        "uk": "невеликі виправлення, додайте папку збірки",
+        "zh-cn": "小修复，添加构建文件夹"
+      },
       "0.1.0": {
         "en": "initial release",
         "de": "Erstveröffentlichung",
@@ -43,7 +56,9 @@
       "uk": "bascloud",
       "zh-cn": "巴斯云"
     },
-    "authors": ["Yanick <stephan@bascloud.net>"],
+    "authors": [
+      "Yanick <stephan@bascloud.net>"
+    ],
     "keywords": [
       "bascloud",
       "digital twin",
