@@ -60,58 +60,62 @@ class Bascloud extends utils.Adapter {
     axios.defaults.timeout = 5000
 
     // Subscribe to all write readings
-    if (!this.config.readingsWrite)
-      return console.warn('No readingsWrite defined')
-    this.config.readingsWrite.forEach(async (reading) => {
-      readingsWrite[reading.localId] = reading
-      readingsWrite[reading.localId].lastValueTransmitted = true
-      let intervalTimeout = reading.interval * 1000 * 60 // default to minutes
-      if (reading.intervalUnit === 'h') {
-        intervalTimeout = intervalTimeout * 60
-      } else if (reading.intervalUnit === 'd') {
-        intervalTimeout = intervalTimeout * 60 * 24
-      }
-      readingsWrite[reading.localId].funcInterval = setInterval(
-        this.bascloudIntervalTransmit.bind(this, reading.localId),
-        intervalTimeout
-      )
-      this.subscribeForeignStates(reading.localId)
-    })
+    if (this.config.readingsWrite) {
+      this.config.readingsWrite.forEach(async (reading) => {
+        readingsWrite[reading.localId] = reading
+        readingsWrite[reading.localId].lastValueTransmitted = true
+        let intervalTimeout = reading.interval * 1000 * 60 // default to minutes
+        if (reading.intervalUnit === 'h') {
+          intervalTimeout = intervalTimeout * 60
+        } else if (reading.intervalUnit === 'd') {
+          intervalTimeout = intervalTimeout * 60 * 24
+        }
+        readingsWrite[reading.localId].funcInterval = setInterval(
+          this.bascloudIntervalTransmit.bind(this, reading.localId),
+          intervalTimeout
+        )
+        this.subscribeForeignStates(reading.localId)
+      })
+    } else {
+      console.warn('No readingsWrite defined')
+    }
 
     // Subscribe to all read readings
-    if (!this.config.readingsRead)
-      return console.warn('No readingsRead defined')
-    this.config.readingsRead.forEach(async (reading) => {
-      readingsRead[reading.localId] = reading
-      let intervalTimeout = reading.interval * 1000 * 60 // default to minutes
-      if (reading.intervalUnit === 'h') {
-        intervalTimeout = intervalTimeout * 60
-      } else if (reading.intervalUnit === 'd') {
-        intervalTimeout = intervalTimeout * 60 * 24
-      }
+    if (this.config.readingsRead) {
+      this.config.readingsRead.forEach(async (reading) => {
+        readingsRead[reading.localId] = reading
+        let intervalTimeout = reading.interval * 1000 * 60 // default to minutes
+        if (reading.intervalUnit === 'h') {
+          intervalTimeout = intervalTimeout * 60
+        } else if (reading.intervalUnit === 'd') {
+          intervalTimeout = intervalTimeout * 60 * 24
+        }
 
-      // Create state if it doesn't exist
-      await this.setObjectNotExistsAsync(reading.localId, {
-        type: 'state',
-        common: {
-          name: reading.localId,
-          type: 'number',
-          role: 'indicator',
-          read: true,
-          write: true,
-          unit: reading.unit,
-        },
-        native: {},
+        // Create state if it doesn't exist
+        await this.setObjectNotExistsAsync(reading.localId, {
+          type: 'state',
+          common: {
+            name: reading.localId,
+            type: 'number',
+            role: 'indicator',
+            read: true,
+            write: true,
+            unit: reading.unit,
+          },
+          native: {},
+        })
+
+        // Set interval to read from bascloud
+        this.log.debug(`setting interval for ${reading.localId}`)
+        this.bascloudRead(reading.localId)
+        readingsRead[reading.localId].funcInterval = setInterval(
+          this.bascloudRead.bind(this, reading.localId),
+          intervalTimeout
+        )
       })
-
-      // Set interval to read from bascloud
-      this.log.debug(`setting interval for ${reading.localId}`)
-      this.bascloudRead(reading.localId)
-      readingsRead[reading.localId].funcInterval = setInterval(
-        this.bascloudRead.bind(this, reading.localId),
-        intervalTimeout
-      )
-    })
+    } else {
+      console.warn('No readingsRead defined')
+    }
   }
 
   /**
