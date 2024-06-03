@@ -60,7 +60,8 @@ class Bascloud extends utils.Adapter {
     axios.defaults.timeout = 5000
 
     // Subscribe to all write readings
-    if (!this.config.readingsWrite) throw new Error('No readingsWrite defined')
+    if (!this.config.readingsWrite)
+      return console.warn('No readingsWrite defined')
     this.config.readingsWrite.forEach(async (reading) => {
       readingsWrite[reading.localId] = reading
       readingsWrite[reading.localId].lastValueTransmitted = true
@@ -78,7 +79,8 @@ class Bascloud extends utils.Adapter {
     })
 
     // Subscribe to all read readings
-    if (!this.config.readingsRead) throw new Error('No readingsRead defined')
+    if (!this.config.readingsRead)
+      return console.warn('No readingsRead defined')
     this.config.readingsRead.forEach(async (reading) => {
       readingsRead[reading.localId] = reading
       let intervalTimeout = reading.interval * 1000 * 60 // default to minutes
