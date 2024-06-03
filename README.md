@@ -71,7 +71,7 @@ You can also test your adapter in an actual ioBroker instance.
 	### **WORK IN PROGRESS**
 -->
 
-### **WORK IN PROGRESS**
+### 0.1.0 (2024-06-03)
 
 - (Yanick) initial release
 
