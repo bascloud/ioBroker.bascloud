@@ -9,14 +9,16 @@
   "homepage": "https://github.com/BAScloud/ioBroker.bascloud",
   "license": "MIT",
   "keywords": [
-    "ioBroker",
-    "template",
-    "Smart Home",
-    "home automation"
+    "bascloud",
+    "digital twin",
+    "building automation",
+    "smart building",
+    "iot",
+    "connector"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/BAScloud/ioBroker.bascloud.git"
+    "url": "https://github.com/bascloud/ioBroker.bascloud.git"
   },
   "engines": {
     "node": ">= 18"
