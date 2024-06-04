@@ -35,29 +35,29 @@
       "de": "BAScloud",
       "ru": "BAScloud",
       "pt": "BAScloud",
-      "nl": "BASwolk",
+      "nl": "BAScloud",
       "fr": "BAScloud",
       "it": "BAScloud",
-      "es": "BASnube",
+      "es": "BAScloud",
       "pl": "BAScloud",
       "uk": "BAScloud",
-      "zh-cn": "巴斯云"
+      "zh-cn": "BAScloud"
     },
     "desc": {
-      "en": "bascloud",
-      "de": "Bascloud",
-      "ru": "облако",
-      "pt": "bascloud",
-      "nl": "baswolk",
-      "fr": "nuage de bas",
-      "it": "bascloud",
-      "es": "nube basal",
-      "pl": "chmura podstawowa",
-      "uk": "bascloud",
-      "zh-cn": "巴斯云"
+      "en": "BAScloud is a secure platform for networking and storing building information across properties.",
+      "de": "BAScloud ist eine sichere Plattform zur objektübergreifenden Vernetzung und Speicherung von Gebäudeinformationen.",
+      "ru": "BAScloud — это безопасная платформа для создания сети и хранения информации о зданиях на разных объектах.",
+      "pt": "BAScloud é uma plataforma segura para rede e armazenamento de informações prediais em propriedades.",
+      "nl": "BAScloud is een veilig platform voor het netwerken en opslaan van gebouwinformatie over verschillende eigendommen heen.",
+      "fr": "BAScloud est une plate-forme sécurisée pour la mise en réseau et le stockage des informations sur les bâtiments dans toutes les propriétés.",
+      "it": "BAScloud è una piattaforma sicura per il networking e l'archiviazione di informazioni sugli edifici tra proprietà.",
+      "es": "BAScloud es una plataforma segura para establecer contactos y almacenar información de construcción en todas las propiedades.",
+      "pl": "BAScloud to bezpieczna platforma do łączenia w sieć i przechowywania informacji o budynkach w różnych obiektach.",
+      "uk": "BAScloud — це безпечна платформа для роботи в мережі та зберігання інформації про будівлі в об’єктах.",
+      "zh-cn": "BAScloud 是一个安全平台，用于跨物业联网和存储建筑信息。"
     },
     "authors": [
-      "Yanick <stephan@bascloud.net>"
+      "Yanick Stephan <stephan@bascloud.net>"
     ],
     "keywords": [
       "bascloud",
@@ -102,7 +102,7 @@
   },
   "native": {
     "tenantId": "",
-    "apiKey": "42",
+    "apiKey": "",
     "readingsWrite": [],
     "readingsRead": []
   },
