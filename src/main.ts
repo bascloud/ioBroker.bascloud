@@ -247,7 +247,7 @@ class Bascloud extends utils.Adapter {
     if (readingsWrite[id].lastValueTransmitted) {
       return
     }
-    if (readingsWrite[id].lastValue) {
+    if (readingsWrite[id].lastValue !== undefined) {
       this.bascloudTransmitValue(id, readingsWrite[id].lastValue!)
       readingsWrite[id].lastValueTransmitted = true
     }
