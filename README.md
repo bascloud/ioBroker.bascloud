@@ -71,6 +71,11 @@ You can also test your adapter in an actual ioBroker instance.
 	### **WORK IN PROGRESS**
 -->
 
+### 0.1.2 (2024-06-04)
+
+- (Yanick) fix for 0 values
+- (Yanick) translation updates
+
 ### 0.1.1 (2024-06-03)
 
 - (Yanick) small fixes, add build folder

@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "bascloud",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "news": {
+      "0.1.2": {
+        "en": "fix for 0 values\ntranslation updates",
+        "de": "Fix für 0-Werte\nÜbersetzungsaktualisierungen",
+        "ru": "исправить 0 значений\nобновления перевода",
+        "pt": "correção para valores 0\natualizações de tradução",
+        "nl": "oplossing voor 0 waarden\nvertaling updates",
+        "fr": "correction des valeurs 0\nmises à jour de traduction",
+        "it": "correggere i valori 0\naggiornamenti della traduzione",
+        "es": "arreglar para 0 valores\nactualizaciones de traducción",
+        "pl": "popraw dla wartości 0\naktualizacje tłumaczeń",
+        "uk": "виправити значення 0\nоновлення перекладу",
+        "zh-cn": "修复 0 值\n翻译更新"
+      },
       "0.1.1": {
         "en": "small fixes, add build folder",
         "de": "Kleine Korrekturen, Build-Ordner hinzufügen",
@@ -56,9 +69,7 @@
       "uk": "BAScloud — це безпечна платформа для роботи в мережі та зберігання інформації про будівлі в об’єктах.",
       "zh-cn": "BAScloud 是一个安全平台，用于跨物业联网和存储建筑信息。"
     },
-    "authors": [
-      "Yanick Stephan <stephan@bascloud.net>"
-    ],
+    "authors": ["Yanick Stephan <stephan@bascloud.net>"],
     "keywords": [
       "bascloud",
       "digital twin",
@@ -74,7 +85,6 @@
     },
     "platform": "Javascript/Node.js",
     "main": "build/main.js",
-    "nogit": true,
     "icon": "bascloud.png",
     "enabled": true,
     "extIcon": "https://raw.githubusercontent.com/BAScloud/ioBroker.bascloud/main/admin/bascloud.png",

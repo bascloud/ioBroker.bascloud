@@ -206,7 +206,7 @@ class Bascloud extends utils.Adapter {
     if (readingsWrite[id].lastValueTransmitted) {
       return;
     }
-    if (readingsWrite[id].lastValue) {
+    if (readingsWrite[id].lastValue !== void 0) {
       this.bascloudTransmitValue(id, readingsWrite[id].lastValue);
       readingsWrite[id].lastValueTransmitted = true;
     }
