@@ -116,6 +116,8 @@
     "readingsWrite": [],
     "readingsRead": []
   },
+  "protectedNative": ["apiKey"],
+  "encryptedNative": ["apiKey"],
   "objects": [],
   "instanceObjects": []
 }
