@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "bascloud",
-    "version": "0.1.2",
+    "version": "0.2.0",
     "news": {
+      "0.2.0": {
+        "en": "fixes for automated adapter testing",
+        "de": "Korrekturen für automatisierte Adaptertests",
+        "ru": "исправления для автоматического тестирования адаптера",
+        "pt": "correções para testes automatizados de adaptadores",
+        "nl": "oplossingen voor het automatisch testen van adapters",
+        "fr": "correctifs pour les tests automatisés des adaptateurs",
+        "it": "correzioni per il test automatico dell'adattatore",
+        "es": "correcciones para las pruebas automatizadas de adaptadores",
+        "pl": "poprawki do automatycznego testowania adapterów",
+        "uk": "виправлення для автоматизованого тестування адаптера",
+        "zh-cn": "修复自动适配器测试"
+      },
       "0.1.2": {
         "en": "fix for 0 values\ntranslation updates",
         "de": "Fix für 0-Werte\nÜbersetzungsaktualisierungen",
@@ -69,7 +82,9 @@
       "uk": "BAScloud — це безпечна платформа для роботи в мережі та зберігання інформації про будівлі в об’єктах.",
       "zh-cn": "BAScloud 是一个安全平台，用于跨物业联网和存储建筑信息。"
     },
-    "authors": ["Yanick Stephan <stephan@bascloud.net>"],
+    "authors": [
+      "Yanick Stephan <stephan@bascloud.net>"
+    ],
     "keywords": [
       "bascloud",
       "digital twin",
@@ -114,8 +129,12 @@
     "readingsWrite": [],
     "readingsRead": []
   },
-  "protectedNative": ["apiKey"],
-  "encryptedNative": ["apiKey"],
+  "protectedNative": [
+    "apiKey"
+  ],
+  "encryptedNative": [
+    "apiKey"
+  ],
   "objects": [],
   "instanceObjects": []
 }
