@@ -91,6 +91,11 @@ class Bascloud extends utils.Adapter {
     } else {
       console.warn("No readingsRead defined");
     }
+    if (this.config.sendOnStart) {
+      Object.keys(readingsWrite).forEach((key) => {
+        this.bascloudTransmitNoCache(key);
+      });
+    }
   }
   /**
    * Is called when adapter shuts down - callback has to be called under any circumstances!
@@ -127,9 +132,9 @@ class Bascloud extends utils.Adapter {
     if (state) {
       this.log.debug(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
       if (!readingsWrite[id].intervalEnabled) {
-        this.bascloudTransmitState(id, state);
+        this.bascloudTransmitValue(id, state.val);
       } else {
-        this.bascloudSetValue(id, state.val);
+        this.bascloudSetCacheValue(id, state.val);
       }
     } else {
       this.log.debug(`state ${id} deleted`);
@@ -172,7 +177,7 @@ class Bascloud extends utils.Adapter {
       this.log.error(`state ${id} failed to read from bascloud: ${error}`);
     });
   }
-  bascloudSetValue(id, val) {
+  bascloudSetCacheValue(id, val) {
     this.log.debug(`setting cache value ${id} to ${val}`);
     const f = readingsWrite[id].intervalFunction;
     switch (f) {
@@ -203,16 +208,30 @@ class Bascloud extends utils.Adapter {
     readingsWrite[id].lastValueTransmitted = false;
   }
   bascloudIntervalTransmit(id) {
-    if (readingsWrite[id].lastValueTransmitted) {
+    this.log.debug(
+      `interval transmit for ${id}, alwaysSend: ${readingsWrite[id].alwaysSend}, lastValueTransmitted: ${readingsWrite[id].lastValueTransmitted}`
+    );
+    if (!readingsWrite[id].alwaysSend && readingsWrite[id].lastValueTransmitted) {
       return;
     }
     if (readingsWrite[id].lastValue !== void 0) {
       this.bascloudTransmitValue(id, readingsWrite[id].lastValue);
       readingsWrite[id].lastValueTransmitted = true;
+    } else {
+      this.log.warn(`no cache value to transmit for ${id}`);
+      this.bascloudTransmitNoCache(id);
     }
   }
-  bascloudTransmitState(id, state) {
-    this.bascloudTransmitValue(id, state.val);
+  bascloudTransmitNoCache(id) {
+    this.getForeignState(id, (err, state) => {
+      if (state) {
+        this.bascloudTransmitValue(id, state.val);
+        readingsWrite[id].lastValue = state.val;
+        readingsWrite[id].lastValueTransmitted = true;
+      } else {
+        this.log.error(`no value to transmit for ${id}`);
+      }
+    });
   }
   bascloudTransmitValue(id, val) {
     const reading = this.config.readingsWrite.find(

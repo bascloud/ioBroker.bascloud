@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "bascloud",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "news": {
+      "0.3.0": {
+        "en": "added always send and send on start options",
+        "de": "Optionen „Immer senden“ und „Beim Start senden“ hinzugefügt",
+        "ru": "добавлены опции «Всегда отправлять» и «Отправлять при запуске»",
+        "pt": "adicionadas opções de sempre enviar e enviar ao iniciar",
+        "nl": "Altijd verzenden en verzenden bij startopties toegevoegd",
+        "fr": "ajout des options toujours envoyer et envoyer au démarrage",
+        "it": "aggiunte sempre le opzioni invia e invia all'avvio",
+        "es": "Se agregaron opciones de enviar siempre y enviar al iniciar.",
+        "pl": "dodano opcje zawsze wysyłaj i wysyłaj przy starcie",
+        "uk": "додано параметри завжди надсилати та надсилати під час запуску",
+        "zh-cn": "添加了始终发送和开始时发送选项"
+      },
       "0.2.0": {
         "en": "fixes for automated adapter testing",
         "de": "Korrekturen für automatisierte Adaptertests",
@@ -82,9 +95,7 @@
       "uk": "BAScloud — це безпечна платформа для роботи в мережі та зберігання інформації про будівлі в об’єктах.",
       "zh-cn": "BAScloud 是一个安全平台，用于跨物业联网和存储建筑信息。"
     },
-    "authors": [
-      "Yanick Stephan <stephan@bascloud.net>"
-    ],
+    "authors": ["Yanick Stephan <stephan@bascloud.net>"],
     "keywords": [
       "bascloud",
       "digital twin",
@@ -129,12 +140,8 @@
     "readingsWrite": [],
     "readingsRead": []
   },
-  "protectedNative": [
-    "apiKey"
-  ],
-  "encryptedNative": [
-    "apiKey"
-  ],
+  "protectedNative": ["apiKey"],
+  "encryptedNative": ["apiKey"],
   "objects": [],
   "instanceObjects": []
 }
