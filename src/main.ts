@@ -117,6 +117,12 @@ class Bascloud extends utils.Adapter {
     } else {
       console.warn('No readingsRead defined')
     }
+
+    if (this.config.sendOnStart) {
+      Object.keys(readingsWrite).forEach((key) => {
+        this.bascloudTransmitNoCache(key)
+      })
+    }
   }
 
   /**
@@ -258,18 +264,22 @@ class Bascloud extends utils.Adapter {
       this.bascloudTransmitValue(id, readingsWrite[id].lastValue!)
       readingsWrite[id].lastValueTransmitted = true
     } else {
-      this.log.warn(`no cached value to transmit for ${id}`)
-      // try to read from state
-      this.getForeignState(id, (err, state) => {
-        if (state) {
-          this.bascloudTransmitValue(id, state.val as number)
-          readingsWrite[id].lastValue = state.val as number // update cache so we donot need to read from state again
-          readingsWrite[id].lastValueTransmitted = true
-        } else {
-          this.log.error(`no value to transmit for ${id}`)
-        }
-      })
+      this.log.warn(`no cache value to transmit for ${id}`)
+      this.bascloudTransmitNoCache(id)
     }
+  }
+
+  private bascloudTransmitNoCache(id: string): void {
+    // try to read from state
+    this.getForeignState(id, (err, state) => {
+      if (state) {
+        this.bascloudTransmitValue(id, state.val as number)
+        readingsWrite[id].lastValue = state.val as number // update cache so we donot need to read from state again
+        readingsWrite[id].lastValueTransmitted = true
+      } else {
+        this.log.error(`no value to transmit for ${id}`)
+      }
+    })
   }
 
   private bascloudTransmitValue(id: string, val: number): void {

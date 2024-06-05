@@ -12,6 +12,11 @@
       "label": "API Key",
       "newLine": false
     },
+    "sendOnStart": {
+      "type": "checkbox",
+      "label": "Send values on start",
+      "newLine": true
+    },
     "divider": {
       "type": "divider",
       "label": "Divider",

@@ -74,6 +74,7 @@ You can also test your adapter in an actual ioBroker instance.
 ### **WORK IN PROGRESS**
 
 - (Yanick) always send function
+- (Yanick) add function to send on start
 
 ### 0.2.0 (2024-06-04)
 

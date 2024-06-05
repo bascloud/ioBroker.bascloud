@@ -6,6 +6,7 @@ declare global {
     interface AdapterConfig {
       tenantId: string
       apiKey: string
+      sendOnStart: boolean
       readingsWrite: {
         localId: string
         remoteId: string
