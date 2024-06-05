@@ -20,6 +20,7 @@ const readingsWrite: {
     interval: number
     intervalUnit: 'm' | 'h' | 'd'
     intervalFunction: 'last' | 'min' | 'max'
+    alwaysSend: boolean
 
     funcInterval?: NodeJS.Timeout
     lastValue?: number
@@ -160,9 +161,9 @@ class Bascloud extends utils.Adapter {
       // The state was changed
       this.log.debug(`state ${id} changed: ${state.val} (ack = ${state.ack})`)
       if (!readingsWrite[id].intervalEnabled) {
-        this.bascloudTransmitState(id, state)
+        this.bascloudTransmitValue(id, state.val as number)
       } else {
-        this.bascloudSetValue(id, state.val as number)
+        this.bascloudSetCacheValue(id, state.val as number)
       }
     } else {
       // The state was deleted
@@ -212,7 +213,7 @@ class Bascloud extends utils.Adapter {
       })
   }
 
-  private bascloudSetValue(id: string, val: number): void {
+  private bascloudSetCacheValue(id: string, val: number): void {
     this.log.debug(`setting cache value ${id} to ${val}`)
     const f = readingsWrite[id].intervalFunction
     switch (f) {
@@ -244,17 +245,31 @@ class Bascloud extends utils.Adapter {
   }
 
   private bascloudIntervalTransmit(id: string): void {
-    if (readingsWrite[id].lastValueTransmitted) {
+    this.log.debug(
+      `interval transmit for ${id}, alwaysSend: ${readingsWrite[id].alwaysSend}, lastValueTransmitted: ${readingsWrite[id].lastValueTransmitted}`
+    )
+    if (
+      !readingsWrite[id].alwaysSend &&
+      readingsWrite[id].lastValueTransmitted
+    ) {
       return
     }
     if (readingsWrite[id].lastValue !== undefined) {
       this.bascloudTransmitValue(id, readingsWrite[id].lastValue!)
       readingsWrite[id].lastValueTransmitted = true
+    } else {
+      this.log.warn(`no cached value to transmit for ${id}`)
+      // try to read from state
+      this.getForeignState(id, (err, state) => {
+        if (state) {
+          this.bascloudTransmitValue(id, state.val as number)
+          readingsWrite[id].lastValue = state.val as number // update cache so we donot need to read from state again
+          readingsWrite[id].lastValueTransmitted = true
+        } else {
+          this.log.error(`no value to transmit for ${id}`)
+        }
+      })
     }
-  }
-
-  private bascloudTransmitState(id: string, state: ioBroker.State): void {
-    this.bascloudTransmitValue(id, state.val as number)
   }
 
   private bascloudTransmitValue(id: string, val: number): void {

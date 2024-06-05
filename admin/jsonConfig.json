@@ -74,6 +74,15 @@
           "default": "last",
           "sm": 3,
           "disabled": "return !data.intervalEnabled;"
+        },
+        {
+          "type": "checkbox",
+          "attr": "alwaysSend",
+          "label": "Always send value (even if unchanged)",
+          "tooltip": "Send value even if it has not changed",
+          "newLine": true,
+          "default": true,
+          "disabled": "return !data.intervalEnabled;"
         }
       ],
       "titleAttr": "localId"

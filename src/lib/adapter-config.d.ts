@@ -13,6 +13,7 @@ declare global {
         interval: number
         intervalUnit: 'm' | 'h' | 'd'
         intervalFunction: 'last' | 'min' | 'max'
+        alwaysSend: boolean
       }[]
       readingsRead: {
         localId: string

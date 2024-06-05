@@ -71,6 +71,10 @@ You can also test your adapter in an actual ioBroker instance.
 	### **WORK IN PROGRESS**
 -->
 
+### **WORK IN PROGRESS**
+
+- (Yanick) always send function
+
 ### 0.2.0 (2024-06-04)
 
 - (Yanick) fixes for automated adapter testing
