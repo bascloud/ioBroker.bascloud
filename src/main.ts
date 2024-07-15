@@ -22,7 +22,7 @@ const readingsWrite: {
     intervalFunction: 'last' | 'min' | 'max'
     alwaysSend: boolean
 
-    funcInterval?: NodeJS.Timeout
+    funcInterval?: ioBroker.Interval | undefined
     lastValue?: number
     lastValueTransmitted?: boolean
   }
@@ -36,9 +36,11 @@ const readingsRead: {
     interval: number
     intervalUnit: 'm' | 'h' | 'd'
 
-    funcInterval?: NodeJS.Timeout
+    funcInterval?: ioBroker.Interval | undefined
   }
 } = {}
+
+const TIMEOUT_LIMIT = 2147483647 // 2,147,483,647 ms (about 24.8 days)
 
 class Bascloud extends utils.Adapter {
   public constructor(options: Partial<utils.AdapterOptions> = {}) {
@@ -71,7 +73,14 @@ class Bascloud extends utils.Adapter {
         } else if (reading.intervalUnit === 'd') {
           intervalTimeout = intervalTimeout * 60 * 24
         }
-        readingsWrite[reading.localId].funcInterval = setInterval(
+        if (intervalTimeout >= TIMEOUT_LIMIT) {
+          intervalTimeout = TIMEOUT_LIMIT
+          this.log.error(
+            `Interval timeout (for ${reading.localId}) reached maximum allowed value. Please consider reducing the interval duration`
+          )
+        }
+
+        readingsWrite[reading.localId].funcInterval = this.setInterval(
           this.bascloudIntervalTransmit.bind(this, reading.localId),
           intervalTimeout
         )
@@ -91,6 +100,12 @@ class Bascloud extends utils.Adapter {
         } else if (reading.intervalUnit === 'd') {
           intervalTimeout = intervalTimeout * 60 * 24
         }
+        if (intervalTimeout >= TIMEOUT_LIMIT) {
+          intervalTimeout = TIMEOUT_LIMIT
+          this.log.error(
+            `Interval timeout (for ${reading.localId}) reached maximum allowed value. Please consider reducing the interval duration`
+          )
+        }
 
         // Create state if it doesn't exist
         await this.setObjectNotExistsAsync(reading.localId, {
@@ -98,9 +113,9 @@ class Bascloud extends utils.Adapter {
           common: {
             name: reading.localId,
             type: 'number',
-            role: 'indicator',
+            role: 'state',
             read: true,
-            write: true,
+            write: false,
             unit: reading.unit,
           },
           native: {},
@@ -109,7 +124,7 @@ class Bascloud extends utils.Adapter {
         // Set interval to read from bascloud
         this.log.debug(`setting interval for ${reading.localId}`)
         this.bascloudRead(reading.localId)
-        readingsRead[reading.localId].funcInterval = setInterval(
+        readingsRead[reading.localId].funcInterval = this.setInterval(
           this.bascloudRead.bind(this, reading.localId),
           intervalTimeout
         )
@@ -133,7 +148,11 @@ class Bascloud extends utils.Adapter {
       // Here you must clear all timeouts or intervals that may still be active
       Object.keys(readingsWrite).forEach((key) => {
         if (readingsWrite[key].funcInterval)
-          clearInterval(readingsWrite[key].funcInterval)
+          this.clearInterval(readingsWrite[key].funcInterval)
+      })
+      Object.keys(readingsRead).forEach((key) => {
+        if (readingsRead[key].funcInterval)
+          this.clearInterval(readingsRead[key].funcInterval)
       })
       callback()
     } catch (e) {
