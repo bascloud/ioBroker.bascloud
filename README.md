@@ -22,7 +22,7 @@
 	### **WORK IN PROGRESS**
 -->
 
-### 0.4.0 (2024-06-05)
+### 0.4.0 (2024-07-15)
 
 - (Yanick) fixes from feedback
 - (Yanick) upgrade js-controller and admin dependency
