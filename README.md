@@ -13,7 +13,7 @@
 
 ## BAScloud adapter for ioBroker
 
-BAScloud is a secure platform for networking and storing building information across properties. In addition to historical and current measured values and general information on data points, it stores master data of buildings centrally in a private cloud.
+[BAScloud](https://bascloud.net/) is a secure platform for networking and storing building information across properties. In addition to historical and current measured values and general information on data points, it stores master data of buildings centrally in a private cloud.
 
 ## Changelog
 
