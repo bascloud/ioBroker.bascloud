@@ -164,6 +164,7 @@ class Bascloud extends utils.Adapter {
     state: ioBroker.State | null | undefined
   ): void {
     if (state) {
+      if (readingsWrite[id] === undefined) return
       // The state was changed
       this.log.debug(`state ${id} changed: ${state.val} (ack = ${state.ack})`)
       if (!readingsWrite[id].intervalEnabled) {
