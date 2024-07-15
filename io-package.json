@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "bascloud",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "news": {
+      "0.4.0": {
+        "en": "various fixes from ioBroker feedback",
+        "de": "Verschiedene Korrekturen aus dem ioBroker-Feedback",
+        "ru": "различные исправления по отзывам ioBroker",
+        "pt": "várias correções do feedback do ioBroker",
+        "nl": "verschillende oplossingen van ioBroker-feedback",
+        "fr": "divers correctifs issus des commentaires d'ioBroker",
+        "it": "varie correzioni dal feedback di ioBroker",
+        "es": "varias correcciones de los comentarios de ioBroker",
+        "pl": "różne poprawki na podstawie opinii ioBroker",
+        "uk": "різні виправлення з відгуків ioBroker",
+        "zh-cn": "ioBroker 反馈的各种修复"
+      },
       "0.3.0": {
         "en": "added always send and send on start options",
         "de": "Optionen „Immer senden“ und „Beim Start senden“ hinzugefügt",

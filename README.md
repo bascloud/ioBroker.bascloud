@@ -22,6 +22,16 @@
 	### **WORK IN PROGRESS**
 -->
 
+### 0.4.0 (2024-06-05)
+
+- (Yanick) fixes from feedback
+- (Yanick) upgrade js-controller and admin dependency
+- (Yanick) filter invalid characters
+- (Yanick) fix various crashes and timeouts
+- (Yanick) add translations to all labels
+- (Yanick) set correct types and values
+- (Yanick) add testing for windows and macos
+
 ### 0.3.0 (2024-06-05)
 
 - (Yanick) always send function
