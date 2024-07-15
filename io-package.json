@@ -95,7 +95,9 @@
       "uk": "BAScloud — це безпечна платформа для роботи в мережі та зберігання інформації про будівлі в об’єктах.",
       "zh-cn": "BAScloud 是一个安全平台，用于跨物业联网和存储建筑信息。"
     },
-    "authors": ["Yanick Stephan <stephan@bascloud.net>"],
+    "authors": [
+      "Yanick Stephan <stephan@bascloud.net>"
+    ],
     "keywords": [
       "bascloud",
       "digital twin",
@@ -140,8 +142,12 @@
     "readingsWrite": [],
     "readingsRead": []
   },
-  "protectedNative": ["apiKey"],
-  "encryptedNative": ["apiKey"],
+  "protectedNative": [
+    "apiKey"
+  ],
+  "encryptedNative": [
+    "apiKey"
+  ],
   "objects": [],
   "instanceObjects": []
 }

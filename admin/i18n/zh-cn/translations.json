@@ -1,3 +1,22 @@
 {
-    "bascloud adapter settings": "BAScloud 的适配器设置"
+    "bascloud adapter settings": "BAScloud 的适配器设置",
+    "Tenant ID": "租户ID",
+    "API Key": "API密钥",
+    "Send values on start": "开始时发送值",
+    "Readings (Write to BAScloud)": "读数（写入 BAScloud）",
+    "(local) ioBroker Object ID": "（本地）ioBroker 对象 ID",
+    "(remote) Device ID": "（远程）设备 ID",
+    "Transmit Interval": "发送间隔",
+    "Interval": "间隔",
+    "Interval Unit": "间隔单位",
+    "Interval Function": "区间函数",
+    "Always send value (even if unchanged)": "始终发送值（即使未更改）",
+    "Readings (Read from BAScloud)": "读物（从BAScloud读取）",
+    "(local) Variable Name": "（本地）变量名称",
+    "Unit": "单元",
+    "Read Interval": "读取间隔",
+    "Read Interval Unit": "读取间隔单位",
+    "Minutes": "分钟",
+    "Hours": "小时",
+    "Days": "天"
 }

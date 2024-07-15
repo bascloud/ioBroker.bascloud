@@ -1,3 +1,22 @@
 {
-    "bascloud adapter settings": "Paramètres de l'adaptateur pour BAScloud"
+    "bascloud adapter settings": "Paramètres de l'adaptateur pour BAScloud",
+    "Tenant ID": "ID du locataire",
+    "API Key": "clé API",
+    "Send values on start": "Envoyer les valeurs au démarrage",
+    "Readings (Write to BAScloud)": "Lectures (écrire sur BAScloud)",
+    "(local) ioBroker Object ID": "(local) ID d'objet ioBroker",
+    "(remote) Device ID": "(à distance) ID de l'appareil",
+    "Transmit Interval": "Intervalle de transmission",
+    "Interval": "Intervalle",
+    "Interval Unit": "Unité d'intervalle",
+    "Interval Function": "Fonction d'intervalle",
+    "Always send value (even if unchanged)": "Toujours envoyer la valeur (même si elle est inchangée)",
+    "Readings (Read from BAScloud)": "Lectures (lues depuis BAScloud)",
+    "(local) Variable Name": "(local) Nom de la variable",
+    "Unit": "Unité",
+    "Read Interval": "Intervalle de lecture",
+    "Read Interval Unit": "Unité d'intervalle de lecture",
+    "Minutes": "Minutes",
+    "Hours": "Heures",
+    "Days": "Jours"
 }
