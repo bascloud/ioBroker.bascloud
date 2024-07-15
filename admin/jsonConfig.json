@@ -100,7 +100,10 @@
         {
           "type": "text",
           "attr": "localId",
-          "label": "(local) Variable Name"
+          "label": "(local) Variable Name",
+          "validator": "return data.localId !== null && data.localId.search(/[^a-zA-Z0-9-_]+/) === -1",
+          "validatorErrorText": "Found invalid keys in Variable Name",
+          "validatorNoSaveOnError": true
         },
         {
           "type": "text",
