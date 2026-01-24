@@ -9,6 +9,7 @@
   "homepage": "https://github.com/BAScloud/ioBroker.bascloud",
   "license": "MIT",
   "keywords": [
+    "ioBroker",
     "bascloud",
     "digital twin",
     "building automation",
