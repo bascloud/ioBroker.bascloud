@@ -8,7 +8,7 @@ import * as utils from '@iobroker/adapter-core'
 import axios from 'axios'
 
 // Load your modules here, e.g.:
-// import * as fs from "fs";
+// import * as fs from "node:fs";
 
 const bascloudUrl = 'https://api.bascloud.net'
 
