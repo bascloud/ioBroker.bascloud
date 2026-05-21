@@ -22,6 +22,10 @@
 	### **WORK IN PROGRESS**
 -->
 
+
+### **WORK IN PROGRESS**
+- (ioBroker-Bot) Adapter requires js-controller >= 6.0.11 now.
+
 ### 0.4.0 (2024-07-15)
 
 - (Yanick) fixes from feedback
