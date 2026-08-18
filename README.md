@@ -22,6 +22,9 @@
 	### **WORK IN PROGRESS**
 -->
 
+### **WORK IN PROGRESS**
+- (copilot) Adapter requires node.js >= 22 now
+
 ### 0.4.0 (2024-07-15)
 
 - (Yanick) fixes from feedback
